@@ -23,7 +23,9 @@ public class PriceIntegrationTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-
+    @Test
+    public void contextLoads() {
+    }
 
     @Test
     public void getPrice() throws Exception {

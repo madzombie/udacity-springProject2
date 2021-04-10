@@ -26,6 +26,10 @@ public class PriceControllerTest {
     private PricingService pricingService;
 
     @Test
+    public void contextLoads() {
+    }
+
+    @Test
     public  void getPrice() throws Exception{
         mockMvc.perform(get("/services/price").param("vehicleId", String.valueOf(1)))
                 .andExpect(status().isOk());

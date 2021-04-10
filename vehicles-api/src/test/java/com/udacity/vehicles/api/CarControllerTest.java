@@ -144,7 +144,25 @@ public class CarControllerTest {
         carService.delete(1L);
         assertThat(carService.list().size(),equalTo(1));
     }
+    @Test
+    public void updateCar() throws Exception {
+        /**
+         * TODO: Add a test to check whether a vehicle is appropriately deleted
+         *   when the `delete` method is called from the Car Controller. This
+         *   should utilize the car from `getCar()` below.
+         */
+        carService.save(getCar());
 
+        Car newCar = carService.findById(1L);
+        newCar.setDetails(new Details());
+        newCar.setCondition(Condition.NEW);
+        newCar.setLocation(new Location(1d, 1d));
+        Car updatedCar = carService.save(newCar);
+        assertThat(updatedCar, notNullValue());
+        assertThat(updatedCar.getCondition(), equalTo(Condition.NEW));
+        assertThat(updatedCar.getLocation().getLat(), equalTo(1d));
+        assertThat(updatedCar.getLocation().getLon(), equalTo(1d));
+    }
     /**
      * Creates an example Car object for use in testing.
      * @return an example Car object
